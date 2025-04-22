@@ -1,0 +1,355 @@
+/* Estilos para el juego Dragon Ball RPG */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #ff9500;
+    background-image: linear-gradient(to bottom, #ff9500, #ff7600);
+    background-image: url('../img/bg.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 36px;
+    margin-bottom: 30px;
+    background: #ff6600;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.battle-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.character-card {
+    background: rgba(226, 224, 224, 0.9);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.character-image {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 15px;
+    position: relative;
+}
+
+.ssj-level {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ffd700;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+.character-placeholder {
+    width: 100px;
+    height: 100px;
+    background-color: #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    border: 3px solid #ff6600;
+    font-weight: bold;
+    color: #666;
+}
+
+.barra {
+    width: 100%;
+    height: 25px;
+    border: 2px solid #000;
+    border-radius: 15px;
+    margin: 10px 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.vida { 
+    background: linear-gradient(to right, #f00, #ff5050); 
+    height: 100%; 
+    transition: width 0.5s;
+    border-radius: 13px;
+}
+
+.ki { 
+    background: linear-gradient(to right, #0f0, #50ff50); 
+    height: 100%; 
+    transition: width 0.5s;
+    border-radius: 13px;
+}
+
+.texto-barra {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    line-height: 25px;
+}
+
+.mensajes {
+    border: 2px solid #000;
+    border-radius: 15px;
+    padding: 15px;
+    height: 200px;
+    overflow-y: auto;
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color:#000
+}
+
+.mensajes p {
+    margin: 8px 0;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    border-left: 4px solid #ff6600;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.action-group {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.action-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ff6600;
+    border-bottom: 2px solid #ff6600;
+    padding-bottom: 5px;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+button {
+    background-color: #4169e1;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #2a4db7;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.transformar-button {
+    background-color: #ffd700;
+    color: #333;
+}
+
+.transformar-button:hover {
+    background-color: #ffcc00;
+}
+
+.aura-ssj {
+    position: relative;
+    animation: auraGlow 1s infinite alternate;
+}
+
+.aura-ssj::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.7) 0%, rgba(255, 215, 0, 0) 70%);
+    border-radius: 20px;
+    z-index: -1;
+}
+
+/* Estilo nivel SSJ */
+.aura-ssj.ssj1 {
+    box-shadow: 0 0 20px 5px rgba(255, 215, 0, 0.6);
+}
+
+.aura-ssj.ssj2 {
+    box-shadow: 0 0 25px 8px rgba(255, 215, 0, 0.7);
+}
+
+.aura-ssj.ssj3 {
+    box-shadow: 0 0 30px 12px rgba(255, 215, 0, 0.8);
+}
+
+.semilla-button {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.semilla-button:hover {
+    background-color: #27ae60;
+}
+
+.semilla-segunda {
+    background-color: #f39c12;
+}
+
+.semilla-segunda:hover {
+    background-color: #d35400;
+}
+
+.ataque-button {
+    background-color: #e74c3c;
+}
+
+.ataque-button:hover {
+    background-color: #c0392b;
+}
+
+.cargar-button {
+    background-color: #3498db;
+}
+
+.cargar-button:hover {
+    background-color: #2980b9;
+}
+
+.genkidama-button {
+    background-color: #9b59b6;
+}
+
+.genkidama-button:hover {
+    background-color: #8e44ad;
+}
+
+.reiniciar-button {
+    background-color: #7f8c8d;
+    margin-top: 20px;
+    display: block;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px;
+}
+
+.reiniciar-button:hover {
+    background-color: #616a6b;
+}
+
+.game-over {
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.derrota-imagen {
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+}
+
+.game-over h2 {
+    color: #e74c3c;
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    animation: textFlash 1.5s infinite alternate;
+}
+
+@keyframes textFlash {
+    0% {
+        color: #e74c3c;
+        text-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+    }
+    100% {
+        color: #c0392b;
+        text-shadow: 0 0 15px rgba(231, 76, 60, 0.8);
+    }
+}
+
+.victory h2 {
+    color: #27ae60;
+}
+
+@keyframes auraGlow {
+    0% {
+        box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.4);
+    }
+    100% {
+        box-shadow: 0 0 25px 12px rgba(255, 215, 0, 0.9);
+    }
+}
+
+/* Para que sea responsive */
+@media (max-width: 768px) {
+    .battle-area {
+        flex-direction: column;
+    }
+    
+    .character-card {
+        width: 100%;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+}
